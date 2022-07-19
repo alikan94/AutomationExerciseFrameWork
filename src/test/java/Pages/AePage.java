@@ -102,4 +102,10 @@ public class AePage {
     @FindBy (xpath = "//button[@data-qa='login-button']")
     public WebElement loginButton;
 
+    @FindBy (xpath = "//p[text()='Your email or password is incorrect!']")
+    public WebElement loginErrorText;
+
+    @FindBy (xpath = "//i[@class='fa fa-lock']")
+    public WebElement logoutButtonHeader;
+
 }
