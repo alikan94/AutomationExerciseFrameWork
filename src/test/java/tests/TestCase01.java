@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -41,7 +42,7 @@ public class TestCase01 extends IlkUcMaddeTesti{
 
         //9. Fill details: Title, Name, Email, Password, Date of birth
         aePage.newUserSignupMrRadioButton.click();
-        aePage.newUserSignupPasswordTextBox.sendKeys("12345");
+        aePage.newUserSignupPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
         aePage.newUserSignupBirthDateDay.sendKeys("12");
         aePage.newUserSignupBirthDateMonth.sendKeys("o");
         aePage.newUserSignupBirthDateYear.sendKeys("1994");
@@ -91,7 +92,7 @@ public class TestCase01 extends IlkUcMaddeTesti{
         aePage.deleteAccountHeader.click();
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is visible");
+        softAssert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is not visible");
         softAssert.assertAll();
     }
 }

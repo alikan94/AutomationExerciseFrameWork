@@ -9,8 +9,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
-public class IlkUcMaddeTesti {
+public class IlkUcMaddeTesti extends TestBaseRapor {
 
     AePage aePage = new AePage();
     Faker faker = new Faker();

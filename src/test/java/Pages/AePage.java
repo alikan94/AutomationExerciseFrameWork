@@ -90,5 +90,16 @@ public class AePage {
     @FindBy (xpath = "//div[@class='page-header']")
     public WebElement deleteAccountPageDeleteBaslik;
 
+    @FindBy (xpath = "//h2[text()='Login to your account']")
+    public WebElement loginToYourAccountTitle;
+
+    @FindBy (xpath = "//input[@data-qa='login-email']")
+    public WebElement loginUserNameTextBox;
+
+    @FindBy (xpath = "//input[@data-qa='login-password']")
+    public WebElement loginPasswordTextBox;
+
+    @FindBy (xpath = "//button[@data-qa='login-button']")
+    public WebElement loginButton;
 
 }
