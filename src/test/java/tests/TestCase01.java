@@ -4,12 +4,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class TestCase01 extends IlkUcMaddeTesti{
+
+    SoftAssert softAssert = new SoftAssert();
 
     private String dateGetir(){
         LocalDate date = LocalDate.now();
@@ -19,26 +23,22 @@ public class TestCase01 extends IlkUcMaddeTesti{
 
 
     @Test
-    public void signUpTest(){
+    public void signUpAndDeleteAccountTest(){
         //4. Click on 'Signup / Login' button
         aePage.signUpHeader.click();
         //5. Verify 'New User Signup!' is visible
-        Assert.assertTrue(aePage.newUserSignupBasligi.isDisplayed());
-    }
+        softAssert.assertTrue(aePage.newUserSignupBasligi.isDisplayed());
 
-    @Test (dependsOnMethods = "signUpTest")
-    public void signUpButtonTest(){
         //6. Enter name and email address
-        aePage.newUserSignupUserNameTextBox.sendKeys("ali");
-        aePage.newUserSignupEmailTextBox.sendKeys("denemeMaili"+dateGetir()+"@gmail.com");
+        aePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
+        aePage.newUserSignupEmailTextBox.sendKeys(faker.internet().emailAddress());
         //7. Click 'Signup' button
+        ReusableMethods.waitFor(2);
         aePage.newUserSignupButton.click();
         //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-        Assert.assertTrue(aePage.newUserSignupEnterAccountBaslik.isDisplayed());
-    }
+        softAssert.assertTrue(aePage.newUserSignupEnterAccountBaslik.isDisplayed());
 
-    @Test (dependsOnMethods = "signUpButtonTest")
-    public void createAccountTesti() {
+
         //9. Fill details: Title, Name, Email, Password, Date of birth
         aePage.newUserSignupMrRadioButton.click();
         aePage.newUserSignupPasswordTextBox.sendKeys("12345");
@@ -77,24 +77,21 @@ public class TestCase01 extends IlkUcMaddeTesti{
                 .sendKeys(Keys.ENTER)
                 .perform();
         //14. Verify that 'ACCOUNT CREATED!' is visible
-        Assert.assertTrue(aePage.newUserSignupAccountCreatedBaslik.isDisplayed());
-    }
+        softAssert.assertTrue(aePage.newUserSignupAccountCreatedBaslik.isDisplayed());
 
-    @Test (dependsOnMethods = "createAccountTesti")
-    public void signUpContinueTesti() {
         //15. Click 'Continue' button
+        ReusableMethods.waitFor(2);
         aePage.newUserSignupAccountCreatedContinue.click();
         //16. Verify that 'Logged in as username' is visible
-        Assert.assertTrue(aePage.loggedInAsUserNameHeader.isDisplayed());
+        softAssert.assertTrue(aePage.loggedInAsUserNameHeader.isDisplayed());
 
-    }
-
-    @Test (dependsOnMethods = "signUpContinueTesti")
-    public void deleteAccountTesti() {
 
         //17. Click 'Delete Account' button
+        ReusableMethods.waitFor(2);
         aePage.deleteAccountHeader.click();
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        Assert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed());
+        ReusableMethods.waitFor(2);
+        softAssert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is visible");
+        softAssert.assertAll();
     }
 }

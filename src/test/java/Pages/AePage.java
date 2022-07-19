@@ -87,7 +87,7 @@ public class AePage {
     @FindBy (xpath = "//button[text()='Delete']")
     public WebElement deleteAccountPageDeleteButton;
 
-    @FindBy (xpath = "//h1=[text()='Delete Account']")
+    @FindBy (xpath = "//div[@class='page-header']")
     public WebElement deleteAccountPageDeleteBaslik;
 
 

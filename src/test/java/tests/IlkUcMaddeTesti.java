@@ -1,6 +1,7 @@
 package tests;
 
 import Pages.AePage;
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -12,6 +13,7 @@ import utilities.Driver;
 public class IlkUcMaddeTesti {
 
     AePage aePage = new AePage();
+    Faker faker = new Faker();
 
     @BeforeClass
     public void homePageGorunurlukTesti() {
