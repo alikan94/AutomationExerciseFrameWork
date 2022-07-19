@@ -25,7 +25,7 @@ public class IlkUcMaddeTesti extends TestBaseRapor {
         Assert.assertTrue(aePage.logo.isDisplayed());
     }
 
-    //@AfterClass
+    @AfterClass
     public void tearDown() {
         Driver.closeDriver();
     }
