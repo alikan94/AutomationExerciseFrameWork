@@ -1,9 +1,8 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 import utilities.Driver;
 
 public class AePage {
@@ -105,7 +104,39 @@ public class AePage {
     @FindBy (xpath = "//p[text()='Your email or password is incorrect!']")
     public WebElement loginErrorText;
 
+    @FindBy (xpath = "//p[text()='Email Address already exist!']")
+    public WebElement signupErrorText;
+
     @FindBy (xpath = "//i[@class='fa fa-lock']")
     public WebElement logoutButtonHeader;
+
+    @FindBy (xpath = "//a[text()=' Contact us']")
+    public WebElement contactUsHeaderButton;
+
+    @FindBy (xpath = "//h2[text()='Get In Touch']")
+    public WebElement contactPageGetInTouchTitle;
+
+    @FindBy (xpath = "(//input[@class='form-control'])[1]")
+    public WebElement contactPageNameTextBox;
+
+    @FindBy (xpath = "//input[@class='btn btn-primary pull-left submit_form']")
+    public WebElement contactPageSubmitButton;
+
+    @FindBy (xpath = "//input[@name='upload_file']")
+    public WebElement contactPageUploadButton;
+
+    @FindBy (xpath = "//div[@class='status alert alert-success']")
+    public WebElement contactPageSuccessMessage;
+
+    @FindBy (xpath = "//span[text()=' Home']")
+    public WebElement contactPageSuccessMessageHomeButton;
+
+    @FindBy (xpath = "(//i[@class='fa fa-list'])[1]")
+    public WebElement testCasesHeaderButton;
+
+    @FindBy (xpath = "//b[text()='Test Cases']")
+    public WebElement testCasesPageTitle;
+
+
 
 }
