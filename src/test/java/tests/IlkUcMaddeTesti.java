@@ -1,12 +1,10 @@
 package tests;
 
-import Pages.AePage;
+import pages.AePage;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;

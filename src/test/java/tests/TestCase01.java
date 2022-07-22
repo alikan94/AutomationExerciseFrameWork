@@ -31,10 +31,10 @@ public class TestCase01 extends IlkUcMaddeTesti{
         softAssert.assertTrue(aePage.newUserSignupBasligi.isDisplayed());
 
         //6. Enter name and email address
+        ReusableMethods.waitFor(2);
         aePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
         aePage.newUserSignupEmailTextBox.sendKeys(faker.internet().emailAddress());
         //7. Click 'Signup' button
-        ReusableMethods.waitFor(2);
         aePage.newUserSignupButton.click();
         //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
         softAssert.assertTrue(aePage.newUserSignupEnterAccountBaslik.isDisplayed());
