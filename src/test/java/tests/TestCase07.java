@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import utilities.ReusableMethods;
 
-public class TestCase07 extends IlkUcMaddeTesti{
+public class TestCase07 extends BaseTest {
 
     /*
             Test Case 7: Verify Test Cases Page
@@ -15,7 +15,7 @@ public class TestCase07 extends IlkUcMaddeTesti{
             5. Verify user is navigated to test cases page successfully
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
 
 
     @Test
@@ -30,14 +30,14 @@ public class TestCase07 extends IlkUcMaddeTesti{
         extentTest.info("Navigated to AE website homepage.");
 
         //4. Click on 'Test Cases' button
-        aePage.testCasesHeaderButton.click();
-        extentTest.info("Click on 'Test Cases' button.");
+        homePage.testCasesHeaderButton.click();
+        extentTest.info("Clicked on 'Test Cases' button.");
 
         //5. Verify user is navigated to test cases page successfully
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.testCasesPageTitle.isDisplayed());
-        extentTest.pass("User is navigated to test cases page successfully");
-        softAssert.assertAll();
+        softAssert.assertTrue(homePage.testCasesPageTitle.isDisplayed());
+        extentTest.pass("User is navigated to test cases page successfully.");
+        //softAssert.assertAll();
 
     }
 }

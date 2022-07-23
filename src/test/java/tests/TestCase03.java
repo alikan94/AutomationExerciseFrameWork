@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
-public class TestCase03 extends IlkUcMaddeTesti{
+public class TestCase03 extends BaseTest {
 
     /*
             1. Launch browser
@@ -18,7 +18,7 @@ public class TestCase03 extends IlkUcMaddeTesti{
             8. Verify error 'Your email or password is incorrect!' is visible
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void LoginUserWithIncorrectEmailAndPasswordTest() {
@@ -35,27 +35,27 @@ public class TestCase03 extends IlkUcMaddeTesti{
 
         //4. Click on 'Signup / Login' button
         ReusableMethods.waitFor(2);
-        aePage.signUpHeader.click();
+        homePage.signUpHeader.click();
         extentTest.info("Clicked to login button on the header.");
 
         //5. Verify 'Login to your account' is visible
-        softAssert.assertTrue(aePage.loginToYourAccountTitle.isDisplayed());
+        softAssert.assertTrue(homePage.loginToYourAccountTitle.isDisplayed());
         extentTest.pass("'Login To Your Account' title is displayed");
 
         //6. Enter incorrect email address and password
-        aePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeWrongMail"));
-        aePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeWrongPassword"));
+        homePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeWrongMail"));
+        homePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeWrongPassword"));
         extentTest.info("Entered incorrect email address and password.");
 
         //7. Click 'login' button
-        aePage.loginButton.click();
+        homePage.loginButton.click();
         extentTest.info("Clicked to login button on the login page.");
 
         //8. Verify error 'Your email or password is incorrect!' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.loginErrorText.isDisplayed());
+        softAssert.assertTrue(homePage.loginErrorText.isDisplayed());
         extentTest.pass("'Your email or password is incorrect!' is visible");
-        softAssert.assertAll();
+        //softAssert.assertAll();
 
     }
 }

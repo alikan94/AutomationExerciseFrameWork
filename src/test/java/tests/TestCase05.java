@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
-public class TestCase05 extends IlkUcMaddeTesti{
+public class TestCase05 extends BaseTest {
     /*
             1. Launch browser
             2. Navigate to url 'http://automationexercise.com'
@@ -17,7 +17,7 @@ public class TestCase05 extends IlkUcMaddeTesti{
             8. Verify error 'Email Address already exist!' is visible
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void registerUserWithExistingEmailTest() {
@@ -32,28 +32,28 @@ public class TestCase05 extends IlkUcMaddeTesti{
 
         //4. Click on 'Signup / Login' button
         ReusableMethods.waitFor(2);
-        aePage.signUpHeader.click();
+        homePage.signUpHeader.click();
         extentTest.info("Clicked to login button on the header.");
 
         //5. Verify 'New User Signup!' is visible
-        softAssert.assertTrue(aePage.newUserSignupBasligi.isDisplayed());
+        softAssert.assertTrue(homePage.newUserSignupBasligi.isDisplayed());
         extentTest.pass("'New User Signup!' is visible.");
 
         //6. Enter name and already registered email address
         ReusableMethods.waitFor(2);
-        aePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
-        aePage.newUserSignupEmailTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
+        homePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
+        homePage.newUserSignupEmailTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
         extentTest.info("Entered name and already registered email address.");
 
         //7. Click 'Signup' button
-        aePage.newUserSignupButton.click();
+        homePage.newUserSignupButton.click();
         extentTest.info("Clicked 'Signup' button.");
 
         //8. Verify error 'Email Address already exist!' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.signupErrorText.isDisplayed());
+        softAssert.assertTrue(homePage.signupErrorText.isDisplayed());
         extentTest.pass("'Your email or password is incorrect!' is visible");
-        softAssert.assertAll();
+        //softAssert.assertAll();
 
     }
 }

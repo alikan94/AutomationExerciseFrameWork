@@ -2,7 +2,6 @@ package tests;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import utilities.ConfigReader;
@@ -12,49 +11,40 @@ import utilities.ReusableMethods;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class TestCase01 extends IlkUcMaddeTesti{
-
-    SoftAssert softAssert = new SoftAssert();
-
-    private String dateGetir(){
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
-        return date.format(formatters);
-    }
-
+public class TestCase01 extends BaseTest {
 
     @Test
     public void signUpAndDeleteAccountTest(){
         //4. Click on 'Signup / Login' button
-        aePage.signUpHeader.click();
+        homePage.signUpHeader.click();
         //5. Verify 'New User Signup!' is visible
-        softAssert.assertTrue(aePage.newUserSignupBasligi.isDisplayed());
+        softAssert.assertTrue(homePage.newUserSignupBasligi.isDisplayed());
 
         //6. Enter name and email address
         ReusableMethods.waitFor(2);
-        aePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
-        aePage.newUserSignupEmailTextBox.sendKeys(faker.internet().emailAddress());
+        homePage.newUserSignupUserNameTextBox.sendKeys(faker.name().name());
+        homePage.newUserSignupEmailTextBox.sendKeys(faker.internet().emailAddress());
         //7. Click 'Signup' button
-        aePage.newUserSignupButton.click();
+        homePage.newUserSignupButton.click();
         //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-        softAssert.assertTrue(aePage.newUserSignupEnterAccountBaslik.isDisplayed());
+        softAssert.assertTrue(homePage.newUserSignupEnterAccountBaslik.isDisplayed());
 
 
         //9. Fill details: Title, Name, Email, Password, Date of birth
-        aePage.newUserSignupMrRadioButton.click();
-        aePage.newUserSignupPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
-        aePage.newUserSignupBirthDateDay.sendKeys("12");
-        aePage.newUserSignupBirthDateMonth.sendKeys("o");
-        aePage.newUserSignupBirthDateYear.sendKeys("1994");
+        homePage.newUserSignupMrRadioButton.click();
+        homePage.newUserSignupPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
+        homePage.newUserSignupBirthDateDay.sendKeys("12");
+        homePage.newUserSignupBirthDateMonth.sendKeys("o");
+        homePage.newUserSignupBirthDateYear.sendKeys("1994");
         //10. Select checkbox 'Sign up for our newsletter!'
-        aePage.newUserSignupNewsletterCheckBox.click();
+        homePage.newUserSignupNewsletterCheckBox.click();
         //11. Select checkbox 'Receive special offers from our partners!'
-        aePage.newUserSignupOfferCheckBox.click();
+        homePage.newUserSignupOfferCheckBox.click();
         //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode,
         // Mobile Number
         //13. Click 'Create Account button'
         Actions actions = new Actions(Driver.getDriver());
-        actions.click(aePage.newUserSignupAdressFirstName)
+        actions.click(homePage.newUserSignupAdressFirstName)
                 .sendKeys("aaa")    // firstname
                 .sendKeys(Keys.TAB)
                 .sendKeys("aaa")    // lastname
@@ -78,21 +68,20 @@ public class TestCase01 extends IlkUcMaddeTesti{
                 .sendKeys(Keys.ENTER)
                 .perform();
         //14. Verify that 'ACCOUNT CREATED!' is visible
-        softAssert.assertTrue(aePage.newUserSignupAccountCreatedBaslik.isDisplayed());
+        softAssert.assertTrue(homePage.newUserSignupAccountCreatedBaslik.isDisplayed());
 
         //15. Click 'Continue' button
         ReusableMethods.waitFor(2);
-        aePage.newUserSignupAccountCreatedContinue.click();
+        homePage.newUserSignupAccountCreatedContinue.click();
         //16. Verify that 'Logged in as username' is visible
-        softAssert.assertTrue(aePage.loggedInAsUserNameHeader.isDisplayed());
+        softAssert.assertTrue(homePage.loggedInAsUserNameHeader.isDisplayed());
 
 
         //17. Click 'Delete Account' button
         ReusableMethods.waitFor(2);
-        aePage.deleteAccountHeader.click();
+        homePage.deleteAccountHeader.click();
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is not visible");
-        softAssert.assertAll();
+        softAssert.assertTrue(homePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is not visible");
     }
 }

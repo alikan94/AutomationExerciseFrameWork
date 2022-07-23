@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
-public class TestCase02 extends IlkUcMaddeTesti {
+public class TestCase02 extends BaseTest {
     /*
             1. Launch browser
             2. Navigate to url 'http://automationexercise.com'
@@ -19,7 +19,7 @@ public class TestCase02 extends IlkUcMaddeTesti {
             10. Verify that 'ACCOUNT DELETED!' is visible
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void loginAndDeleteAccountTest() {
@@ -37,32 +37,32 @@ public class TestCase02 extends IlkUcMaddeTesti {
         extentTest.info("Navigated to AE website homepage.");
         //4. Click on 'Signup / Login' button
         ReusableMethods.waitFor(2);
-        aePage.signUpHeader.click();
+        homePage.signUpHeader.click();
         extentTest.info("Clicked to login button on the header.");
         //5. Verify 'Login to your account' is visible
-        softAssert.assertTrue(aePage.loginToYourAccountTitle.isDisplayed());
+        softAssert.assertTrue(homePage.loginToYourAccountTitle.isDisplayed());
         extentTest.pass("'Login To Your Account' title is displayed");
         //6. Enter correct email address and password
-        aePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
-        aePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
+        homePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
+        homePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
         extentTest.info("Entered correct email address and password.");
         //7. Click 'login' button
-        aePage.loginButton.click();
+        homePage.loginButton.click();
         extentTest.info("Clicked to login button on the login page.");
         //8. Verify that 'Logged in as username' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.loggedInAsUserNameHeader.isDisplayed());
+        softAssert.assertTrue(homePage.loggedInAsUserNameHeader.isDisplayed());
         extentTest.pass("'Logged in as username' is visible.");
 
         //9. Click 'Delete Account' button
-        aePage.deleteAccountHeader.click();
+        homePage.deleteAccountHeader.click();
         extentTest.info("Clicked 'Delete Account' button.");
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is not visible");
+        softAssert.assertTrue(homePage.deleteAccountPageDeleteBaslik.isDisplayed(),"Verify that 'ACCOUNT DELETED!' is not visible");
         extentTest.pass("'ACCOUNT DELETED!' is visible.");
-        softAssert.assertAll();
+        //softAssert.assertAll();
 
     }
 }

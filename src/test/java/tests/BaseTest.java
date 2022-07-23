@@ -1,6 +1,7 @@
 package tests;
 
-import pages.AePage;
+import org.testng.asserts.SoftAssert;
+import pages.HomePage;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -9,22 +10,25 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class IlkUcMaddeTesti extends TestBaseRapor {
+public class BaseTest extends TestBaseRapor {
 
-    AePage aePage = new AePage();
+    HomePage homePage = new HomePage();
     Faker faker = new Faker();
+    SoftAssert softAssert = new SoftAssert();
+
 
     @BeforeClass
-    public void homePageGorunurlukTesti() {
+    public void navigateToHomePage() {
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully
         Driver.getDriver().get(ConfigReader.getProperty("aeUrl"));
-        Assert.assertTrue(aePage.logo.isDisplayed());
+        softAssert.assertTrue(homePage.logo.isDisplayed());
     }
 
     @AfterClass
     public void tearDown() {
+        softAssert.assertAll();
         Driver.closeDriver();
     }
 
