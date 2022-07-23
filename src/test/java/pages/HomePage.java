@@ -5,9 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class AePage {
+public class HomePage extends BasePage{
 
-    public AePage(){
+    public HomePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

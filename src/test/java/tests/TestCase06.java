@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TestCase06 extends IlkUcMaddeTesti{
+public class TestCase06 extends BaseTest {
     /*
             1. Launch browser
             2. Navigate to url 'http://automationexercise.com'
@@ -22,7 +22,7 @@ public class TestCase06 extends IlkUcMaddeTesti{
             11. Click 'Home' button and verify that landed to home page successfully
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
@@ -37,16 +37,16 @@ public class TestCase06 extends IlkUcMaddeTesti{
         extentTest.info("Navigated to AE website homepage.");
 
         //4. Click on 'Contact Us' button
-        aePage.contactUsHeaderButton.click();
+        homePage.contactUsHeaderButton.click();
         extentTest.info("Clicked on 'Contact Us' button.");
 
         //5. Verify 'GET IN TOUCH' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.contactPageGetInTouchTitle.isDisplayed());
+        softAssert.assertTrue(homePage.contactPageGetInTouchTitle.isDisplayed());
         extentTest.pass("'GET IN TOUCH' title is visible.");
 
         //6. Enter name, email, subject and message
-        actions.click(aePage.contactPageNameTextBox)
+        actions.click(homePage.contactPageNameTextBox)
                 .sendKeys(faker.name().name())
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().emailAddress())
@@ -58,12 +58,12 @@ public class TestCase06 extends IlkUcMaddeTesti{
                 .perform();
 
         //7. Upload file
-        aePage.contactPageUploadButton.sendKeys("C:\\Users\\alika\\IdeaProjects\\com.AE_UITesting\\src\\test\\java\\uploadtestfile.txt");
+        homePage.contactPageUploadButton.sendKeys("C:\\Users\\alika\\IdeaProjects\\com.AE_UITesting\\src\\test\\java\\uploadtestfile.txt");
         extentTest.info("Uploaded a file.");
 
         //8. Click 'Submit' button
         ReusableMethods.waitFor(2);
-        aePage.contactPageSubmitButton.click();
+        homePage.contactPageSubmitButton.click();
         extentTest.info("Clicked 'Submit' button.");
 
         //9. Click OK button
@@ -74,17 +74,17 @@ public class TestCase06 extends IlkUcMaddeTesti{
         //10. Verify success message 'Success! Your details have been submitted successfully.' is visible
         ReusableMethods.waitFor(1);
         String expectedMessage = "Success! Your details have been submitted successfully.";
-        String actualMessage = aePage.contactPageSuccessMessage.getText();
+        String actualMessage = homePage.contactPageSuccessMessage.getText();
         softAssert.assertEquals(actualMessage,expectedMessage,"Title is not true or not visible");
         extentTest.pass("Success message 'Success! Your details have been submitted successfully.' is visible.");
 
         //11. Click 'Home' button and verify that landed to home page successfully
-        aePage.contactPageSuccessMessageHomeButton.click();
+        homePage.contactPageSuccessMessageHomeButton.click();
         ReusableMethods.waitFor(1);
         extentTest.info("Clicked 'Home' button.");
-        softAssert.assertTrue(aePage.logo.isDisplayed());
+        softAssert.assertTrue(homePage.logo.isDisplayed());
         extentTest.pass("Landed to home page successfully.");
-        softAssert.assertAll();
+        //softAssert.assertAll();
 
     }
 }

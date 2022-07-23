@@ -5,7 +5,7 @@ import org.testng.asserts.SoftAssert;
 import utilities.ConfigReader;
 import utilities.ReusableMethods;
 
-public class TestCase04 extends IlkUcMaddeTesti{
+public class TestCase04 extends BaseTest {
     /*
             Test Case 4: Logout User
             1. Launch browser
@@ -20,7 +20,7 @@ public class TestCase04 extends IlkUcMaddeTesti{
             10. Verify that user is navigated to login page
      */
 
-    SoftAssert softAssert = new SoftAssert();
+    //SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void LogoutUserTest() {
@@ -37,35 +37,35 @@ public class TestCase04 extends IlkUcMaddeTesti{
 
         //4. Click on 'Signup / Login' button
         ReusableMethods.waitFor(2);
-        aePage.signUpHeader.click();
+        homePage.signUpHeader.click();
         extentTest.info("Clicked to login button on the header.");
 
         //5. Verify 'Login to your account' is visible
-        softAssert.assertTrue(aePage.loginToYourAccountTitle.isDisplayed());
+        softAssert.assertTrue(homePage.loginToYourAccountTitle.isDisplayed());
         extentTest.pass("'Login To Your Account' title is displayed");
 
         //6. Enter correct email address and password
-        aePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
-        aePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
+        homePage.loginUserNameTextBox.sendKeys(ConfigReader.getProperty("aeValidMail"));
+        homePage.loginPasswordTextBox.sendKeys(ConfigReader.getProperty("aeValidPassword"));
         extentTest.info("Entered correct email address and password.");
 
         //7. Click 'login' button
-        aePage.loginButton.click();
+        homePage.loginButton.click();
         extentTest.info("Clicked to login button on the login page.");
 
         //8. Verify that 'Logged in as username' is visible
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.loggedInAsUserNameHeader.isDisplayed());
+        softAssert.assertTrue(homePage.loggedInAsUserNameHeader.isDisplayed());
         extentTest.pass("'Logged in as username' is visible.");
 
         //9. Click 'Logout' button
-        aePage.logoutButtonHeader.click();
+        homePage.logoutButtonHeader.click();
         extentTest.info("Clicked to login button on the login page.");
 
         //10. Verify that user is navigated to login page
         ReusableMethods.waitFor(2);
-        softAssert.assertTrue(aePage.loginToYourAccountTitle.isDisplayed());
+        softAssert.assertTrue(homePage.loginToYourAccountTitle.isDisplayed());
         extentTest.pass("User is navigated to login page.");
-        softAssert.assertAll();
+        //softAssert.assertAll();
     }
 }
