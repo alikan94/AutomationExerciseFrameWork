@@ -18,6 +18,13 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ReusableMethods {
+
+    public static WebDriverWait wait;
+
+    {
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+    }
+
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -143,5 +150,18 @@ public class ReusableMethods {
             }
         });
         return element;
+    }
+
+    //Click Method
+    public static void click(WebElement webElement) {
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        waitVisibility(webElement);
+        webElement.click();
+    }
+
+    //Wait Wrapper Method
+    public static void waitVisibility(WebElement webElement) {
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
     }
 }
