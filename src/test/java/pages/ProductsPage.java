@@ -3,15 +3,16 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
 
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage {
 
-    public ProductsPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public ProductsPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
@@ -33,13 +34,16 @@ public class ProductsPage extends BasePage{
     @FindBy(xpath = "//button[@class='btn btn-default btn-lg']")
     public WebElement searchButton;
 
-    public boolean allProductsAreVisible(){
+    @FindBy(xpath = "//h2[text()='Searched Products']")
+    public WebElement searchedProductsTitle;
+
+    public boolean allProductsAreVisible() {
         boolean flag = true;
 
-        for (WebElement w: allProductsList
-             ) {
+        for (WebElement w : allProductsList
+        ) {
             try {
-                ReusableMethods.waitForVisibility(w,5);
+                ReusableMethods.waitForVisibility(w, 5);
                 ReusableMethods.hover(w);
                 flag = w.isDisplayed();
             } catch (Exception e) {
@@ -51,4 +55,42 @@ public class ProductsPage extends BasePage{
         return flag;
     }
 
+    public boolean searchedProductsAreVisible() {
+        boolean flag = true;
+
+        for (WebElement w : productInfoTextCenterList
+        ) {
+            try {
+                ReusableMethods.waitForVisibility(w, 5);
+                ReusableMethods.hover(w);
+                flag = w.isDisplayed();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        }
+        return flag;
+    }
+
+    public boolean searchedProductsAreContainText(String text) {
+        boolean flag = true;
+
+        for (WebElement w : productInfoTextCenterList
+        ) {
+            try {
+                ReusableMethods.waitForVisibility(w, 5);
+                ReusableMethods.hover(w);
+                flag = w.getText().contains(ConfigReader.getProperty(text));
+                if (!flag) {
+                    break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+
+        }
+        return flag;
+    }
 }

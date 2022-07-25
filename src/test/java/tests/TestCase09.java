@@ -3,7 +3,6 @@ package tests;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductsPage;
-import pages.SingleProductPage;
 import utilities.ConfigReader;
 
 public class TestCase09 extends BaseTest{
@@ -18,9 +17,6 @@ public class TestCase09 extends BaseTest{
             7. Verify 'SEARCHED PRODUCTS' is visible
             8. Verify all the products related to search are visible
      */
-
-    HomePage homePage = new HomePage();
-    ProductsPage productsPage = new ProductsPage();
 
     @Test
     public void VerifyAllProductsAndProductDetailPageTest() {
@@ -45,12 +41,16 @@ public class TestCase09 extends BaseTest{
         extentTest.pass("User is navigated to ALL PRODUCTS page successfully.");
 
         //6. Enter product name in search input and click search button
-        productsPage.writeText(productsPage.searchTextBox, ConfigReader.getProperty("aeSearchedProductName"));
+        productsPage.writeText(productsPage,productsPage.searchTextBox, ConfigReader.getProperty("aeSearchedProductName"));
         productsPage.click(productsPage.searchButton);
         extentTest.info("Entered product name in search input and clicked search button.");
 
         //7. Verify 'SEARCHED PRODUCTS' is visible
+        softAssert.assertTrue(productsPage.searchedProductsTitle.isDisplayed());
+        extentTest.pass("'SEARCHED PRODUCTS' is visible.");
 
         //8. Verify all the products related to search are visible
+        softAssert.assertTrue(productsPage.searchedProductsAreVisible());
+        // softAssert.assertTrue(productsPage.searchedProductsAreContainText(ConfigReader.getProperty("aeSearchedProductName")));
     }
 }
