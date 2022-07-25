@@ -6,6 +6,8 @@ import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pages.ProductsPage;
+import pages.SingleProductPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
@@ -13,6 +15,8 @@ import utilities.TestBaseRapor;
 public class BaseTest extends TestBaseRapor {
 
     HomePage homePage = new HomePage();
+    ProductsPage productsPage = new ProductsPage();
+    SingleProductPage singleProductPage = new SingleProductPage();
     Faker faker = new Faker();
     SoftAssert softAssert = new SoftAssert();
 
