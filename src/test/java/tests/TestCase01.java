@@ -15,6 +15,7 @@ public class TestCase01 extends BaseTest {
 
     @Test
     public void signUpAndDeleteAccountTest(){
+        //aaaa
         //4. Click on 'Signup / Login' button
         homePage.signUpHeader.click();
         //5. Verify 'New User Signup!' is visible
