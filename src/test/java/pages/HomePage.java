@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -164,6 +165,8 @@ public class HomePage extends BasePage {
         return new HomePage();
     }
 
+
+    @Step("User scrolled down to footer.")
     public HomePage scrollDownToFooter() {
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -173,6 +176,7 @@ public class HomePage extends BasePage {
         return new HomePage();
     }
 
+    @Step("Web element gorunur mu bakildi.")
     public HomePage assertThatIsVisible(WebElement webElement){
         waitVisibility(webElement);
         assertTrue(webElement.isDisplayed());
