@@ -1,4 +1,4 @@
-# Created at 2022-07-27T20:58:12.239
+# Created at 2022-07-27T21:25:27.073
 org.testng.TestNGException: java.lang.NullPointerException: Cannot invoke "org.testng.xml.XmlSuite.setParsed(boolean)" because "currentXmlSuite" is null
 	at org.testng.TestNG.parseSuite(TestNG.java:338)
 	at org.testng.TestNG.initializeSuitesAndJarFile(TestNG.java:392)
