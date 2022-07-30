@@ -32,7 +32,7 @@ public class BaseTest extends TestBaseRapor {
         //2. Navigate to url 'http://automationexercise.com'
         //3. Verify that home page is visible successfully
         Driver.getDriver().get(ConfigReader.getProperty("aeUrl"));
-        //assertTrue(homePage.logo.isDisplayed());
+        //assertTrue(homePage.logo.isDisplayed()); // bunu kaldırdım
     }
 
     //@AfterClass
